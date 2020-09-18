@@ -1,11 +1,27 @@
-package com.company;
+package com.company.geometry;
 
 public class Point {
-    double x,y;
+    private double x,y;
 
     Point(){
         x = 0;
         y = 0;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
     }
 
     Point(double x, double y){

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.geometry;
 
 public class Segment {
     Point p1,p2;

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.geometry;
 
 public class Triangle {
     Point p1, p2, p3;
@@ -32,6 +32,6 @@ public class Triangle {
 
     @Override
     public String toString() {
-        return "Triangle " + "p1 = " + p1 + ", p2 = " + p2 + ", p3 = " + p3 +"\n" + "Perimeter = " + perimeter() + " Area = " +area();
+        return "Triangle " + "p1 = " + p1 + ", p2 = " + p2 + ", p3 = " + p3 +"\n" + "Perimeter = " + perimeter() + " Area = " + area();
     }
 }
