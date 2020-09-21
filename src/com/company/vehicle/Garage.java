@@ -19,15 +19,20 @@ public class Garage {
     }
 
     boolean inputNewVehicle() {
-        if(actualCapacity == capacity)
+        if(actualCapacity == capacity){
+            out.println("Мест больше нет");
             return false;
+        }
         Scanner scanner = new Scanner(System.in);
-        out.println("Какой тип транспортного средства? 1 - Car, 2 - Truck, 3 - Bus");
+        out.println("Какой тип транспортного средства? 1 - Car, 2 - Truck, 3 - Bus, 4 - break");
         int type = scanner.nextInt();
         switch (type) {
             case 1 -> vehicles[actualCapacity] = new Car();
             case 2 -> vehicles[actualCapacity] = new Truck();
             case 3 -> vehicles[actualCapacity] = new Bus();
+            case 4 -> {
+                return false;
+            }
         }
         vehicles[actualCapacity++].input(scanner);
         return true;
