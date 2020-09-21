@@ -2,7 +2,7 @@ package com.company.vehicle;
 
 import java.util.Scanner;
 
-public class Vehicle {
+public abstract class Vehicle {
     int enginePower;
     String number;
 
@@ -42,6 +42,6 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "\nenginePower = " + enginePower +  "\nnumber = " + number;
+        return "\n\nenginePower = " + enginePower +  "\nnumber = " + number;
     }
 }
