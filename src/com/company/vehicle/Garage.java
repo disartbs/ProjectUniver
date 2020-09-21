@@ -9,8 +9,8 @@ public class Garage {
     String address;
     int capacity;
     int actualCapacity;
-   // Vehicle [] vehicles = new Vehicle[capacity];
-   Vehicle [] vehicles;
+    Vehicle [] vehicles;
+
     Garage (String address, int capacity){
         this.address = address;
         this.capacity = capacity;
@@ -29,14 +29,15 @@ public class Garage {
             case 2 -> vehicles[actualCapacity] = new Truck();
             case 3 -> vehicles[actualCapacity] = new Bus();
         }
-        vehicles[actualCapacity].input(scanner);
-        actualCapacity++;
+        vehicles[actualCapacity++].input(scanner);
         return true;
     }
 
     boolean inputNewVehicle(Scanner scanner) {
-        if(actualCapacity == capacity)
+        if(actualCapacity == capacity){
+            out.println("Мест больше нет");
             return false;
+        }
         scanner = new Scanner(System.in);
         out.println("Какой тип транспортного средства? 1 - Car, 2 - Truck, 3 - Bus, 4 - break");
         int type = scanner.nextInt();
@@ -48,8 +49,7 @@ public class Garage {
                 return false;
             }
         }
-        vehicles[actualCapacity].input(scanner);
-        actualCapacity++;
+        vehicles[actualCapacity++].input(scanner);
         return true;
     }
     
@@ -61,7 +61,7 @@ public class Garage {
         }
         return count;
     }
-    
+
     int getCarCount(){
         int count = 0;
         for (Vehicle vehicle : vehicles) {
