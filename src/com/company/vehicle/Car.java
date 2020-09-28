@@ -2,28 +2,32 @@ package com.company.vehicle;
 
 import java.util.Scanner;
 
-public class Car extends Vehicle{
+public class Car extends Vehicle {
     //вид кузова и количесвто мест
     String body;
     int numberOfSeats;
 
-    Car(){
+    Car() {
         super();
         body = "";
         numberOfSeats = 0;
     }
 
-    Car(int enginePower, String number, String body, int numberOfSeats){
+    Car(int enginePower, String number, String body, int numberOfSeats) {
         init(enginePower, number, body, numberOfSeats);
     }
 
-    void init(int enginePower, String number, String body, int numberOfSeats){
+    static  Car copy(Car car) {
+        return new Car(car.enginePower, car.number, car.body, car.numberOfSeats);
+    }
+
+    void init(int enginePower, String number, String body, int numberOfSeats) {
         super.init(enginePower, number);
         this.body = body;
         this.numberOfSeats = numberOfSeats;
     }
 
-    void input(){
+    void input() {
         Scanner scanner = new Scanner(System.in);
         super.input(scanner);
         System.out.print("Введите тип кузова");
@@ -32,7 +36,7 @@ public class Car extends Vehicle{
         numberOfSeats = scanner.nextInt();
     }
 
-    void input(Scanner scanner){
+    void input(Scanner scanner) {
         super.input(scanner);
         System.out.print("Введите тип кузова");
         body = scanner.next();

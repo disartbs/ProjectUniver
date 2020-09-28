@@ -1,11 +1,16 @@
 package com.company.geometry;
 
 public class Point {
-    private double x,y;
+    private double x, y;
 
-    Point(){
+    Point() {
         x = 0;
         y = 0;
+    }
+
+    Point(double x, double y) {
+        this.x = x;
+        this.y = y;
     }
 
     public double getX() {
@@ -24,12 +29,7 @@ public class Point {
         this.y = y;
     }
 
-    Point(double x, double y){
-        this.x = x;
-        this.y = y;
-    }
-
-    Point newInstance(){
+    Point newInstance() {
         return new Point(this.x, this.y);
     }
 
@@ -38,7 +38,7 @@ public class Point {
         return "(" + x + "," + y + ')';
     }
 
-    double distance(Point p2){
-        return Math.sqrt(Math.pow(p2.x - this.x,2) + Math.pow(p2.y - this.y,2));
+    double distance(Point p2) {
+        return Math.sqrt(Math.pow(p2.x - this.x, 2) + Math.pow(p2.y - this.y, 2));
     }
 }
