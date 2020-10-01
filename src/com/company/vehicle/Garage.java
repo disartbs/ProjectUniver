@@ -27,10 +27,9 @@ public class Garage {
     }
 
     boolean findVehicle(String number){
-        for(Vehicle vehicle : vehicles){
-            if(vehicle.number.equals(number))
+        for(int i = 0; i < actualCapacity; ++i)
+            if(vehicles[i].number.equals(number))
                 return true;
-        }
         return false;
     }
 

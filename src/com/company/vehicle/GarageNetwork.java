@@ -20,12 +20,13 @@ public class GarageNetwork {
     public GarageNetwork(String name, int count) {
         this.name = name;
         this.count = count;
+        garages = new Garage[count];
     }
 
     String findVehiclesGarageAddress(String number){
-        for (Garage garage : garages) {
-            if (garage.findVehicle(number))
-                return garage.address;
+        for(int i = 0; i < actualCount; i++){
+            if (garages[i].findVehicle(number))
+                return garages[i].address;
         }
         return "Not found";
     }
