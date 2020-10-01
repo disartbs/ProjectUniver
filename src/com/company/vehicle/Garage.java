@@ -3,64 +3,111 @@ package com.company.vehicle;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static java.lang.System.out;
+import static java.lang.System.*;
 
 public class Garage {
 
     String address;
     int capacity;
     Vehicle[] vehicles;
-    private int actualCount;
+    private int actualCapacity;
+
+    public Garage(String address, Vehicle[] vehicles) {
+        this.address = address;
+        capacity = vehicles.length;
+        this.vehicles = vehicles;
+        actualCapacity = vehicles.length;
+    }
 
     Garage(String address, int capacity) {
         this.address = address;
         this.capacity = capacity;
-        this.actualCount = 0;
+        this.actualCapacity = 0;
         vehicles = new Vehicle[capacity];
     }
 
+    boolean findVehicle(String number){
+        for(Vehicle vehicle : vehicles){
+            if(vehicle.number.equals(number))
+                return true;
+        }
+        return false;
+    }
+
+    static Garage initAll(){
+        out.println("Введите адрес гаража");
+        Scanner scanner = new Scanner(in);
+        String address = scanner.next();
+        out.println("Количество транспортных средств");
+        int capacity = scanner.nextInt();
+        Garage garage = new Garage(address, capacity);
+        while (garage.inputNewVehicle(scanner)) {
+        }
+        return garage;
+    }
+
+    static Garage initAll(Scanner scanner){
+        out.println("Введите адрес гаража");
+        String address = scanner.next();
+        out.println("Количество транспортных средств");
+        int capacity = scanner.nextInt();
+        Garage garage = new Garage(address, capacity);
+        while (garage.inputNewVehicle(scanner)) {
+        }
+        return garage;
+    }
+
+    void inputVehicles(){
+        out.println("Количество транспортных средств");
+        Scanner scanner = new Scanner(in);
+        int capacity = scanner.nextInt();
+        Garage garage = new Garage("London", capacity);
+        while (garage.inputNewVehicle(scanner)) {
+        }
+    }
+
     boolean inputNewVehicle() {
-        if (actualCount == capacity) {
+        if (actualCapacity == capacity) {
             out.println("Мест больше нет");
             return false;
         }
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(in);
         out.println("Какой тип транспортного средства? 1 - Car, 2 - Truck, 3 - Bus, 4 - break");
         int type = scanner.nextInt();
         switch (type) {
-            case 1 -> vehicles[actualCount] = new Car();
-            case 2 -> vehicles[actualCount] = new Truck();
-            case 3 -> vehicles[actualCount] = new Bus();
+            case 1 -> vehicles[actualCapacity] = new Car();
+            case 2 -> vehicles[actualCapacity] = new Truck();
+            case 3 -> vehicles[actualCapacity] = new Bus();
             case 4 -> {
                 return false;
             }
         }
-        vehicles[actualCount++].input(scanner);
+        vehicles[actualCapacity++].input(scanner);
         return true;
     }
 
     boolean inputNewVehicle(Scanner scanner) {
-        if (actualCount == capacity) {
+        if (actualCapacity == capacity) {
             out.println("Мест больше нет");
             return false;
         }
-        scanner = new Scanner(System.in);
+        scanner = new Scanner(in);
         out.println("Какой тип транспортного средства? 1 - Car, 2 - Truck, 3 - Bus, 4 - break");
         int type = scanner.nextInt();
         switch (type) {
-            case 1 -> vehicles[actualCount] = new Car();
-            case 2 -> vehicles[actualCount] = new Truck();
-            case 3 -> vehicles[actualCount] = new Bus();
+            case 1 -> vehicles[actualCapacity] = new Car();
+            case 2 -> vehicles[actualCapacity] = new Truck();
+            case 3 -> vehicles[actualCapacity] = new Bus();
             case 4 -> {
                 return false;
             }
         }
-        vehicles[actualCount++].input(scanner);
+        vehicles[actualCapacity++].input(scanner);
         return true;
     }
 
-    public int getActualCount() {
-        return actualCount;
+    public int getActualCapacity() {
+        return actualCapacity;
     }
 
     int getBusCount() {
@@ -98,12 +145,21 @@ public class Garage {
         return buses;
     }
 
+    public Truck[] getTrucks() {
+        int index = 0;
+        Truck[] trucks = new Truck[getTruckCount()];
+        for(Vehicle vehicle : vehicles)
+            if(vehicle instanceof Truck)
+                trucks[index++] = Truck.copy((Truck) vehicle);
+        return trucks;
+    }
+
     @Override
     public String toString() {
         return "Garage " +
                 "\naddress = " + address +
                 "\ncapacity = " + capacity +
-                "\nactualCapacity = " + actualCount +
+                "\nactualCapacity = " + actualCapacity +
                 "\nvehicles = " + Arrays.toString(vehicles);
     }
 }

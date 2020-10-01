@@ -14,7 +14,6 @@ public abstract class Vehicle {
     Vehicle(int enginePower, String number) {
         this.init(enginePower, number);
     }
-
     void init(int enginePower, String number) {
         this.enginePower = enginePower;
         this.number = number;
