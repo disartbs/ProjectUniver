@@ -26,6 +26,10 @@ public class Garage {
         vehicles = new Vehicle[capacity];
     }
 
+    static Garage newInstance(Garage garage) {
+        return new Garage(garage.address, garage.vehicles.clone());
+    }
+
     boolean findVehicle(String number){
         for(int i = 0; i < actualCapacity; ++i)
             if(vehicles[i].number.equals(number))
@@ -144,7 +148,16 @@ public class Garage {
         return buses;
     }
 
-    public Truck[] getTrucks() {
+    Car[] getCars(){
+        int index = 0;
+        Car[] cars = new Car[getCarCount()];
+        for(Vehicle vehicle : vehicles)
+            if(vehicle instanceof Car)
+                cars[index++] = Car.copy((Car) vehicle);
+        return cars;
+    }
+
+    Truck[] getTrucks() {
         int index = 0;
         Truck[] trucks = new Truck[getTruckCount()];
         for(Vehicle vehicle : vehicles)
