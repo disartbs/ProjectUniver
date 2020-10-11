@@ -8,7 +8,6 @@ public class GarageNetwork {
     String name;
     private Garage[] garages;
 
-
     public GarageNetwork(String name){
         this.name = name;
         garages = new Garage[0];

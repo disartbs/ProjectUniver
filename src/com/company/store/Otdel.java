@@ -1,5 +1,6 @@
 package com.company.store;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Otdel {
@@ -30,17 +31,30 @@ public class Otdel {
         tovars = newTovars;
     }
 
-    public  void input(){//Сделать добавление товара по желанию в while
-        System.out.println("Название отдела: ");
+    public  void input(){//Сделать добавление товара по желанию в whil
+        Scanner scanner = new Scanner(System.in);
+        input(scanner);
     }
 
-    void output(){//Название отдела и элементы в цикле
-
+    private void input(Scanner scanner) {
+        System.out.println("Название отдела: ");
+        name = scanner.next();
+        while (true) {
+            System.out.println("1 - ввести товар, 2 - break");
+            int i = scanner.nextInt();
+            switch (i){
+                case 1 : inputTovar();
+                case 2 : break;
+            }
+        }
     }
 
     public void  inputTovar(){
+       inputTovar(new Scanner(System.in));
+    }
+
+    public void  inputTovar(Scanner scanner){
         System.out.println("Вид товара: 1 - Продовольственный, 2 - промышленный");
-        Scanner scanner =  new Scanner(System.in);
         int type = scanner.nextInt();
         Tovar tovar;
         switch (type){
@@ -54,7 +68,8 @@ public class Otdel {
         addTovar(tovar);
     }
 
-    int countIsExpired(int date){
+
+    int countExpired(int date){
         int count = 0;
         for(Tovar tovar : tovars)
             if(tovar instanceof Food &&  ((Food) tovar).isExpired(date))
@@ -63,4 +78,10 @@ public class Otdel {
         return count;
     }
 
+    @Override
+    public String toString() {
+        return "Otdel " +
+                "name = '" + name + '\'' +
+                ",tovars = " + Arrays.toString(tovars);
+    }
 }
