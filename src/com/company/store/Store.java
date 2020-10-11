@@ -44,7 +44,7 @@ public class Store {
             int i = scanner.nextInt();
             switch (i) {
                 case 1:
-                    addOtdel((new Otdel()));
+                    addOtdel();
                 case 2:
                     break;
             }
@@ -52,6 +52,16 @@ public class Store {
     }
 
     void addOtdel(Otdel otdel){
+        Otdel[] newOtdels = new Otdel[otdels.length];
+        for(int i = 0; i < otdels.length; i++){
+            newOtdels[i] = otdels[i];
+        }
+        newOtdels[newOtdels.length - 1] = otdel;
+        otdels = newOtdels;
+    }
+
+    void addOtdel(){
+        Otdel otdel = new Otdel();
         otdel.input();
         Otdel[] newOtdels = new Otdel[otdels.length];
         for(int i = 0; i < otdels.length; i++){
