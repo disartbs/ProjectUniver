@@ -26,10 +26,14 @@ public class Store {
 
     Otdel getOtdelWithMaxCountExpiredTovars(int date){
         Otdel otdel = null;
+        int count;
         int max = -1;
         for(Otdel otdel1 : otdels){
-            if(otdel1.countExpired(date) > max)
+            count = otdel1.countExpired(date);
+            if(count > max){
                 otdel = otdel1;
+                max = count;
+            }
         }
         return otdel;
     }
