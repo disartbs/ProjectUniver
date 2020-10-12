@@ -15,6 +15,17 @@ public class Food extends Tovar {
         type = "";
     }
 
+    @Override
+    boolean equals(Tovar tovar) throws MyExceptionForStore {
+        if(tovar instanceof Food)
+            return this.name.equals(tovar.name)
+                && this.price == tovar.price
+                && this.manufacturer.equals(tovar.manufacturer)
+                && this.type.equals(((Food) tovar).type)
+                && this.shelfLife == ((Food) tovar).shelfLife;
+        throw new MyExceptionForStore(1, "isn't Food");
+    }
+
     public Food(String name, int price, String manufacturer, int shelfLife, String type) {
         init(name, price, manufacturer, shelfLife, type);
     }

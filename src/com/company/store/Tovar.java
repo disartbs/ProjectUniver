@@ -20,6 +20,8 @@ public abstract class Tovar {
         init(name, price, manufacturer);
     }
 
+    abstract boolean equals(Tovar tovar) throws MyExceptionForStore;
+
     public void input(Scanner scanner){
         out.println("Наименование: ");
         name = scanner.next();

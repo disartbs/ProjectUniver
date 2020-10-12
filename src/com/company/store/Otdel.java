@@ -84,4 +84,9 @@ public class Otdel {
                 "name = '" + name + '\'' +
                 ",tovars = " + Arrays.toString(tovars);
     }
+
+    public void deleteTovar(int i) {
+        Tovar[] newTovars = new Tovar[tovars.length - 1];
+       // for(int i )
+    }
 }

@@ -11,6 +11,16 @@ public class Goods extends Tovar {
         country = "";
     }
 
+    @Override
+    boolean equals(Tovar tovar) throws MyExceptionForStore {
+        if(tovar instanceof Goods)
+            return this.name.equals(tovar.name)
+                    && this.price == tovar.price
+                    && this.manufacturer.equals(tovar.manufacturer)
+                    && this.country.equals(((Goods) tovar).country);
+        throw new MyExceptionForStore(2, "isn't Good");
+    }
+
     public Goods(String name, double price, String manufacturer, String country) {
         init(name, price, manufacturer, country);
     }
