@@ -1,7 +1,5 @@
 package com.company.store;
 
-import com.company.exceptions.ExceptionExample;
-
 import java.util.Scanner;
 
 public class Store {
@@ -26,15 +24,13 @@ public class Store {
         this.otdels = otdels;
     }
 
-
     void deleteTovar(Tovar tovar) throws MyExceptionForStore {
         for(Otdel otdel : otdels){
             for(int i = 0; i < otdel.tovars.length; i++){
                 if(otdel.tovars[i].equals(tovar)){
-                    otdel.deleteTovar(i);
+                    otdel.deleteByIndex(i);
                     return;
                 }
-
             }
         }
         throw new MyExceptionForStore(3, "Not Found");

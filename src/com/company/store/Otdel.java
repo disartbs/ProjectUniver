@@ -8,7 +8,7 @@ public class Otdel {
     String name;
     Tovar[] tovars;
 
-    public Otdel(){
+    public Otdel() {
         name = "";
         tovars = new Tovar[0];
     }
@@ -22,16 +22,16 @@ public class Otdel {
         this.tovars = tovars;
     }
 
-    public void addTovar(Tovar tovar){
+    public void addTovar(Tovar tovar) {
         Tovar[] newTovars = new Tovar[tovars.length];
-        for(int i = 0; i < tovars.length; i++){
+        for (int i = 0; i < tovars.length; i++) {
             newTovars[i] = tovars[i];
         }
         newTovars[newTovars.length - 1] = tovar;
         tovars = newTovars;
     }
 
-    public  void input(){//Сделать добавление товара по желанию в whil
+    public void input() {//Сделать добавление товара по желанию в whil
         Scanner scanner = new Scanner(System.in);
         input(scanner);
     }
@@ -42,24 +42,28 @@ public class Otdel {
         while (true) {
             System.out.println("1 - ввести товар, 2 - break");
             int i = scanner.nextInt();
-            switch (i){
-                case 1 : inputTovar();
-                case 2 : break;
+            switch (i) {
+                case 1:
+                    inputTovar();
+                case 2:
+                    break;
             }
         }
     }
 
-    public void  inputTovar(){
-       inputTovar(new Scanner(System.in));
+    public void inputTovar() {
+        inputTovar(new Scanner(System.in));
     }
 
-    public void  inputTovar(Scanner scanner){
+    public void inputTovar(Scanner scanner) {
         System.out.println("Вид товара: 1 - Продовольственный, 2 - промышленный");
         int type = scanner.nextInt();
         Tovar tovar;
-        switch (type){
-            case 1: tovar = new Food();
-            case 2: tovar = new Goods();
+        switch (type) {
+            case 1:
+                tovar = new Food();
+            case 2:
+                tovar = new Goods();
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + type);
@@ -69,10 +73,10 @@ public class Otdel {
     }
 
 
-    int countExpired(int date){
+    int countExpired(int date) {
         int count = 0;
-        for(Tovar tovar : tovars)
-            if(tovar instanceof Food &&  ((Food) tovar).isExpired(date))
+        for (Tovar tovar : tovars)
+            if (tovar instanceof Food && ((Food) tovar).isExpired(date))
                 count++;
 
         return count;
@@ -85,8 +89,41 @@ public class Otdel {
                 ",tovars = " + Arrays.toString(tovars);
     }
 
-    public void deleteTovar(int i) {
+    public int findTovar(Tovar tovar) {
+        for (int i = 0; i < tovars.length; i++) {
+            try {
+                if (tovars[i].equals(tovar))
+                    return i;
+            } catch (MyExceptionForStore ignored) {
+                continue;
+            }
+        }
+        return -1;
+    }
+
+    public boolean deleteByIndex(int index) throws MyExceptionForStore {
+        if (index < 0 || index > tovars.length - 1)
+            throw new MyExceptionForStore(4, "incorrect index");
+        boolean flag = false;
         Tovar[] newTovars = new Tovar[tovars.length - 1];
-       // for(int i )
+        for(int i = 0, j = 0; i < tovars.length; i++, j++){
+            if(i == index){
+                i++;
+                flag = true;
+            } else
+                newTovars[j] = tovars[i];
+        }
+        tovars = newTovars;
+        return flag;
+    }
+
+    boolean deleteTovar(Tovar tovar){
+        try {
+            deleteByIndex(findTovar(tovar));
+            return true;
+        } catch (MyExceptionForStore myExceptionForStore) {
+            myExceptionForStore.printStackTrace();
+            return false;
+        }
     }
 }
