@@ -11,10 +11,9 @@ public class ParkFish extends Fish implements OceanariumIncome, ZooIncome {
     private int incomeDate;
     private ParkWork zoo;
 
-    public ParkFish(String name, String kind, String water, String type, boolean edible, int age, int incomeDate, ParkWork parkWork) {
+    public ParkFish(String name, String kind, String water, String type, boolean edible, int age) {
         super(name, kind, water, type, edible, age);
-        this.incomeDate = incomeDate;
-        this.zoo = parkWork;
+
     }
 
     int getPositionInZoo() throws NotInZooOrOcenariumException {
@@ -35,11 +34,6 @@ public class ParkFish extends Fish implements OceanariumIncome, ZooIncome {
     public void setIncomeDate(int date, ParkWork zoo) {
         incomeDate = date;
         this.zoo = zoo;
-    }
-
-    @Override
-    public void setIncomeDate(int date) {
-        this.incomeDate = date;
     }
 
     @Override

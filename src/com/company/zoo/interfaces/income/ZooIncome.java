@@ -2,7 +2,7 @@ package com.company.zoo.interfaces.income;
 
 import com.company.zoo.interfaces.park.ParkWork;
 
-public interface ZooIncome {
+public interface ZooIncome extends ParkIncome{
 
     void setIncomeDate(int date, ParkWork zoo);
 

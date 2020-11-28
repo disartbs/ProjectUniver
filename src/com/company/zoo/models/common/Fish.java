@@ -25,6 +25,8 @@ public class Fish extends Entity {
         if (!(o instanceof Fish)) return false;
         Fish fish = (Fish) o;
         return isEdible() == fish.isEdible() &&
+                name.equals(fish.name) &&
+                kind.equals(fish.kind) &&
                 getAge() == fish.getAge() &&
                 Objects.equals(getWater(), fish.getWater()) &&
                 Objects.equals(getType(), fish.getType());

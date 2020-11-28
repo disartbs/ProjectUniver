@@ -21,11 +21,6 @@ public class ParkSnake extends Snake implements OceanariumIncome {
     }
 
     @Override
-    public void setIncomeDate(int date) {
-        incomeDate = date;
-    }
-
-    @Override
     public void setIncomeDate(int date, ParkWork zoo) {
         incomeDate = date;
         owner = zoo;

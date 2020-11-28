@@ -23,6 +23,8 @@ public class Snake extends Entity {
         if (!(o instanceof Snake)) return false;
         Snake snake = (Snake) o;
         return getAge() == snake.getAge() &&
+                name.equals(snake.name) &&
+                kind.equals(snake.kind) &&
                 getLength() == snake.getLength() &&
                 isPoisons() == snake.isPoisons();
     }
