@@ -4,34 +4,44 @@ import com.company.individ2.models.Point;
 import com.company.individ2.models.Shape;
 import com.company.individ2.models.Triangle;
 
-public class ShapeMaster<T1 extends Shape,T2 extends Shape> {
+public class ShapeMaster<T extends Shape> {
 
-    boolean isPointIncludeT1(Point point, T1 t1){
+    private T t;
+    public ShapeMaster(T shape) {
+        this.t = shape;
+    }
+
+    boolean isPointIncludeT1(Point point){
         boolean result = false;
-        Point[] p = t1.getPoints();
+        Point[] p = t.getPoints();
         int j = p.length - 1;
         for (int i = 0; i < p.length; i++) {
-            if ( (p[i].Y <=/*Для строгого включения*/ point.Y && p[j].Y >= point.Y ||
-                    p[j].Y <=/*Для строгого включения*/ point.Y && p[i].Y >= point.Y) &&
-                    (p[i].X + (point.Y - p[i].Y) / (p[j].Y - p[i].Y) * (p[j].X - p[i].X) <=/*Для строгого включения*/ point.X) )
+            if ( (p[i].getY() <=/*Для строгого включения*/ point.getY() && p[j].getY() >= point.getY() ||
+                    p[j].getY() <=/*Для строгого включения*/ point.getY() && p[i].getY() >= point.getY()) &&
+                    (p[i].getX() + (point.getY() - p[i].getY()) /
+                            (p[j].getY() - p[i].getY()) *
+                            (p[j].getX() - p[i].getX()) <=/*Для строгого включения*/ point.getX()) )
                 result = !result;
             j = i;
         }
         return result;
     }
 
-    /**
-     * @param t1
-     * @param t2
-     * is t2 include t1
-     */
-    public boolean isInclude(T1 t1, T2 t2){
-        Point[] points2 = t2.getPoints();
+
+    public boolean isInclude(Shape shape){
+        Point[] points = shape.getPoints();
         boolean result = true;
-        for (Point point : points2) {
-           result = result && isPointIncludeT1(point, t1);
-           System.out.println("" + point + " " + isPointIncludeT1(point,t1));
+        for (Point point : points) {
+           result = result && isPointIncludeT1(point);
+           System.out.println("" + point + " " + isPointIncludeT1(point));
         }
         return result;
+    }
+
+    public void move(int x, int y){
+        Point[] points = t.getPoints();
+        for (Point point : points) {
+            point.move(x,y);
+        }
     }
 }

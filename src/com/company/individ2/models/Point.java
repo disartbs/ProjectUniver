@@ -1,44 +1,49 @@
 package com.company.individ2.models;
 
 public class Point {
-    public double X, Y;
+    private double x, y;
 
     public Point() {
-        X = 0;
-        Y = 0;
+        x = 0;
+        y = 0;
     }
 
     public Point(double x, double y) {
-        this.X = x;
-        this.Y = y;
+        this.x = x;
+        this.y = y;
+    }
+
+    public void move(int x, int y){
+        this.x +=x;
+        this.y +=y;
     }
 
     public double getX() {
-        return X;
+        return x;
     }
 
     public void setX(double x) {
-        this.X = x;
+        this.x = x;
     }
 
     public double getY() {
-        return Y;
+        return y;
     }
 
     public void setY(double y) {
-        this.Y = y;
+        this.y = y;
     }
 
     public Point newInstance() {
-        return new Point(this.X, this.Y);
+        return new Point(this.x, this.y);
     }
 
     @Override
     public String toString() {
-        return "(" + X + "," + Y + ')';
+        return "(" + x + "," + y + ')';
     }
 
     public double distance(Point p2) {
-        return Math.sqrt(Math.pow(p2.X - this.X, 2) + Math.pow(p2.Y - this.Y, 2));
+        return Math.sqrt(Math.pow(p2.x - this.x, 2) + Math.pow(p2.y - this.y, 2));
     }
 }
