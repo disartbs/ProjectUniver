@@ -14,7 +14,7 @@ public class Main {
         list.add(6);
         list.add(7);
         System.out.println(list);
-        remove(1,3);
+        remove(0,5);
         System.out.println(list);
         Date currentTime = Calendar.getInstance().getTime();
         System.out.println(currentTime.getTime());
@@ -24,7 +24,7 @@ public class Main {
         int localIndex = 0;
         for (int i = 0; i < list.size(); i++) {
             if(localIndex>=from && localIndex<to)
-                list.remove(localIndex);
+                list.remove(from);
             localIndex++;
         }
     }

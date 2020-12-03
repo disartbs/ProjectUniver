@@ -44,6 +44,20 @@ public class Human implements Comparable<Human>{
         setAgeByDate(getBirthday());
     }
 
+    public String getBirth() {
+
+        Calendar birthDate = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
+        birthDate.setTime(birthday);
+        Calendar delta = Calendar.getInstance();
+        delta.setTimeInMillis(today.getTimeInMillis() - birthDate.getTimeInMillis());
+        int month = delta.get(Calendar.MONTH);
+        int day = delta.get(Calendar.DAY_OF_MONTH);
+        int year = delta.get(Calendar.YEAR)-1970;
+
+        return "DAY:"+ day + '\'' + "MONTH:" + month + '\'' + "YEAR:" + year;
+    }
+
     private void setAgeByDate(Date birthday) {
         Calendar today = Calendar.getInstance();
         Calendar birthDate = Calendar.getInstance();

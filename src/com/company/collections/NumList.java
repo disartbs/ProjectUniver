@@ -6,7 +6,7 @@ public class NumList {
     ArrayList<Human> numbers;
 
     public NumList() {
-        numbers =  new ArrayList<>();
+        numbers = new ArrayList<>();
     }
 
     public NumList(ArrayList<Human> numbers) {
@@ -18,17 +18,17 @@ public class NumList {
 
     }
 
-    int getDifCount(){
+    int getDifCount() {
         return (new TreeSet<Human>(numbers).size());
     }
 
-    TreeMap<Integer, Integer> ageCount(){
+    TreeMap<Integer, Integer> ageCount() {
         TreeMap<Integer, Integer> mp = new TreeMap<>();
         Iterator<Human> iterator = numbers.iterator();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             Human human = iterator.next();
             int k = 0;
-            if(mp.containsKey(human.getAge())){
+            if (mp.containsKey(human.getAge())) {
                 k = mp.get(human.getAge());
             }
             mp.put(human.getAge(), ++k);
@@ -38,10 +38,10 @@ public class NumList {
         return mp;
     }
 
-    void outTreeSet(){
+    void outTreeSet() {
         TreeSet<Human> treeSet = new TreeSet<Human>(numbers);
         Iterator<Human> iterable = treeSet.iterator();
-        while (iterable.hasNext()){
+        while (iterable.hasNext()) {
             System.out.println("\n" + iterable.next());
         }
     }
@@ -50,25 +50,21 @@ public class NumList {
         Collections.sort(numbers);
     }
 
-    public void outMinMax(){
+    public void outMinMax() {
         Iterator<Human> humanIterator = numbers.iterator();
         Human younger = numbers.get(0);
         Human older = numbers.get(0);
-        while(humanIterator.hasNext()){
+        while (humanIterator.hasNext()) {
             Human human = humanIterator.next();
-            if(human.getBirthday().before(younger.getBirthday())){
-                System.out.println("y" + younger);
-                System.out.println("h" + human);
+            if (human.getBirthday().after(younger.getBirthday())) {
                 younger = human;
             }
-            if(human.getBirthday().after(older.getBirthday())){
-                System.out.println("o" + older);
-                System.out.println("h" + human);
+            if (human.getBirthday().before(older.getBirthday())) {
                 older = human;
             }
         }
-        System.out.println(younger);
-        System.out.println(older);
+        System.out.println(younger + younger.getBirth());
+        System.out.println(older + older.getBirth());
     }
 
     @Override
