@@ -1,2 +1,5 @@
-package com.company.individ2.models;public class Shape {
+package com.company.individ2.models;
+
+public interface Shape {
+    public Point[] getPoints();
 }

@@ -1,44 +1,44 @@
-package com.company.geometry;
+package com.company.individ2.models;
 
 public class Point {
-    private double x, y;
+    public double X, Y;
 
-    Point() {
-        x = 0;
-        y = 0;
+    public Point() {
+        X = 0;
+        Y = 0;
     }
 
-    Point(double x, double y) {
-        this.x = x;
-        this.y = y;
+    public Point(double x, double y) {
+        this.X = x;
+        this.Y = y;
     }
 
     public double getX() {
-        return x;
+        return X;
     }
 
     public void setX(double x) {
-        this.x = x;
+        this.X = x;
     }
 
     public double getY() {
-        return y;
+        return Y;
     }
 
     public void setY(double y) {
-        this.y = y;
+        this.Y = y;
     }
 
-    Point newInstance() {
-        return new Point(this.x, this.y);
+    public Point newInstance() {
+        return new Point(this.X, this.Y);
     }
 
     @Override
     public String toString() {
-        return "(" + x + "," + y + ')';
+        return "(" + X + "," + Y + ')';
     }
 
-    double distance(Point p2) {
-        return Math.sqrt(Math.pow(p2.x - this.x, 2) + Math.pow(p2.y - this.y, 2));
+    public double distance(Point p2) {
+        return Math.sqrt(Math.pow(p2.X - this.X, 2) + Math.pow(p2.Y - this.Y, 2));
     }
 }
