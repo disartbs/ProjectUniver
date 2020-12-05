@@ -27,7 +27,6 @@ public class ShapeMaster<T extends Shape> {
         return result;
     }
 
-
     public boolean isInclude(Shape shape){
         Point[] points = shape.getPoints();
         boolean result = true;
