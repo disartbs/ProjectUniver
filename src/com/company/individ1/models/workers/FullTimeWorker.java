@@ -11,16 +11,6 @@ public class FullTimeWorker extends Worker {
     private int numberWorkingHours;
     private int workingRate;
 
-    public FullTimeWorker(String name, int birthYear, int experience) {
-        super(name, birthYear);
-        try {
-            setExperience(experience);
-        } catch (TimeException exception) {
-            System.out.println(exception.getMessage() + "default will be 0");
-            safeSetExperience(0);
-        }
-    }
-
     public FullTimeWorker(String name, int birthYear, int experience, int numberWorkingHours, int workingRate) {
         super(name, birthYear);
         try {
@@ -34,15 +24,11 @@ public class FullTimeWorker extends Worker {
     }
 
     private void safeSetExperience(int experience) {
-        this.experience =  experience;
+        this.experience = experience;
     }
 
     public void quit() {
         otdel.quitMe(this);
-    }
-
-    @Override
-    public void deleteOtdel() {
         otdel = null;
     }
 
@@ -56,7 +42,7 @@ public class FullTimeWorker extends Worker {
     }
 
     public void setExperience(int experience) throws TimeException {
-        if(experience >= 2020 - birthYear - 18)
+        if (experience >= 2020 - birthYear - 18)
             throw new TimeException("impossible experience");
         this.experience = experience;
     }
@@ -73,13 +59,13 @@ public class FullTimeWorker extends Worker {
 
     @Override
     public String output() {
-        return  toString();
+        return toString();
     }
 
     @Override
     public String toString() {
         String otdelStr;
-        if(otdel==null)
+        if (otdel == null)
             otdelStr = "null";
         else otdelStr = otdel.getName();
         return "FullTimeWorker{" +

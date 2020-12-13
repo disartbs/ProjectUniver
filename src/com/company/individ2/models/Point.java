@@ -1,5 +1,7 @@
 package com.company.individ2.models;
 
+import java.util.Objects;
+
 public class Point {
     private double x, y;
 
@@ -13,9 +15,9 @@ public class Point {
         this.y = y;
     }
 
-    public void move(int x, int y){
-        this.x +=x;
-        this.y +=y;
+    public void move(int x, int y) {
+        this.x += x;
+        this.y += y;
     }
 
     public double getX() {
@@ -41,6 +43,11 @@ public class Point {
     @Override
     public String toString() {
         return "(" + x + "," + y + ')';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getX(), getY());
     }
 
     public double distance(Point p2) {

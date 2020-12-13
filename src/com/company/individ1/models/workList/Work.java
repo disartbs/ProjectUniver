@@ -28,18 +28,18 @@ public class Work {
         this.date = date;
     }
 
-    public void setDate(Calendar date) throws TimeException {
-        if (date.after(Calendar.getInstance()))
-            throw new TimeException("Date after now");
-        this.date = date;
-    }
-
     public HourlyWorker getWorker() {
         return worker;
     }
 
     public Calendar getDate() {
         return date;
+    }
+
+    public void setDate(Calendar date) throws TimeException {
+        if (date.after(Calendar.getInstance()))
+            throw new TimeException("Date after now");
+        this.date = date;
     }
 
     public int getNumberWorkingHours() {

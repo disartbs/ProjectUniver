@@ -1,5 +1,7 @@
 package com.company.individ2.models;
 
+import java.util.Objects;
+
 public class Tetragon implements Shape {
     Point p1, p2, p3, p4;
 
@@ -19,6 +21,12 @@ public class Tetragon implements Shape {
 
     @Override
     public Point[] getPoints() {
-        return new Point[]{p1,p2,p3,p4};
+        return new Point[]{p1, p2, p3, p4};
+    }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(p1, p2, p3, p4);
     }
 }

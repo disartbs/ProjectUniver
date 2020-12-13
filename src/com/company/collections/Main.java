@@ -17,7 +17,9 @@ public class Main {
       //  list.add(new Human("sd4",21));
        // System.out.println(list.getDifCount());
 //        System.out.println(list);
-//        list.outTreeSet();
+        System.out.println(list.ageCount());
+
+        list.outTreeSet();
 //
         list.outMinMax();
     }

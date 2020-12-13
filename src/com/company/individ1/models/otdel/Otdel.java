@@ -2,7 +2,6 @@ package com.company.individ1.models.otdel;
 
 import com.company.individ1.models.table.FullTimeWorkersTable;
 import com.company.individ1.models.workList.HourlyWorkersWorkList;
-import com.company.individ1.models.workList.Work;
 import com.company.individ1.models.workers.FullTimeWorker;
 import com.company.individ1.models.workers.HourlyWorker;
 import com.company.individ1.models.workers.Worker;
@@ -15,7 +14,7 @@ public class Otdel implements MyOtdel {
     HourlyWorkersWorkList hourlyWorkersWorkList;
     String name;
 
-    public Otdel(String name){
+    public Otdel(String name) {
         workers = new ArrayList<>();
         this.name = name;
     }
@@ -40,7 +39,7 @@ public class Otdel implements MyOtdel {
         this.hourlyWorkersWorkList = hourlyWorkersWorkList;
     }
 
-    public Otdel add(Worker worker){
+    public Otdel add(Worker worker) {
         workers.add(worker);
         worker.attachOtdel(this);
         return this;
@@ -49,11 +48,11 @@ public class Otdel implements MyOtdel {
     @Override
     public void quitMe(Worker worker) {
         workers.remove(worker);
-        if(worker instanceof FullTimeWorker)
+        if (worker instanceof FullTimeWorker)
             fullTimeWorkersTable.remove((FullTimeWorker) worker);
-        if(worker instanceof HourlyWorker)
+        if (worker instanceof HourlyWorker)
             hourlyWorkersWorkList.remove((HourlyWorker) worker);
-        worker.deleteOtdel();
+
     }
 
     @Override
@@ -61,15 +60,13 @@ public class Otdel implements MyOtdel {
         return name;
     }
 
-    public String outputWorkers(){
+    public String outputWorkers() {
         StringBuilder str = new StringBuilder();
         for (Worker worker : workers) {
             str.append("   ").append(worker.output());
         }
         return str.toString();
     }
-
-
 
     @Override
     public String toString() {

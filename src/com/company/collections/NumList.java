@@ -4,6 +4,7 @@ import java.util.*;
 
 public class NumList {
     ArrayList<Human> numbers;
+    TreeMap<Integer, Integer> mp = new TreeMap<>();
 
     public NumList() {
         numbers = new ArrayList<>();
@@ -15,7 +16,6 @@ public class NumList {
 
     public void add(Human number) {
         numbers.add(number);
-
     }
 
     int getDifCount() {
@@ -23,7 +23,6 @@ public class NumList {
     }
 
     TreeMap<Integer, Integer> ageCount() {
-        TreeMap<Integer, Integer> mp = new TreeMap<>();
         Iterator<Human> iterator = numbers.iterator();
         while (iterator.hasNext()) {
             Human human = iterator.next();
@@ -32,19 +31,28 @@ public class NumList {
                 k = mp.get(human.getAge());
             }
             mp.put(human.getAge(), ++k);
-
-
         }
         return mp;
     }
 
     void outTreeSet() {
-        TreeSet<Human> treeSet = new TreeSet<Human>(numbers);
+        TreeSet<Human> treeSet = new TreeSet<>(numbers);
         Iterator<Human> iterable = treeSet.iterator();
         while (iterable.hasNext()) {
             System.out.println("\n" + iterable.next());
         }
     }
+
+    void outputMap() {
+
+        Iterator<Map.Entry<Integer, Integer>> itr = mp.entrySet().iterator();
+        while(itr.hasNext()) {
+            Map.Entry<Integer, Integer> entry = itr.next();
+            System.out.println("Возраст = " + entry.getKey() +
+                    ", Количество = " + entry.getValue());
+        }
+    }
+
 
     void sort() {
         Collections.sort(numbers);

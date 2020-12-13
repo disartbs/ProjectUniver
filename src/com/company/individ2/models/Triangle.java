@@ -1,8 +1,6 @@
 package com.company.individ2.models;
 
-import com.company.individ2.models.Point;
-
-import java.util.LinkedList;
+import java.util.Objects;
 
 public class Triangle implements Shape {
     Point p1, p2, p3;
@@ -19,7 +17,12 @@ public class Triangle implements Shape {
         p3 = new Point(x3, y3);
     }
 
-    public Point[] getPoints(){
-        return new Point[]{p1,p2,p3};
+    public Point[] getPoints() {
+        return new Point[]{p1, p2, p3};
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(p1, p2, p3);
     }
 }

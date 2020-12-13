@@ -18,13 +18,7 @@ public class HourlyWorker extends Worker {
         }
     }
 
-    private void safeSetPaymentPerHour(int paymentPerHour){
-        this.paymentPerHour = paymentPerHour;
-    }
-
-    public void setPaymentPerHour(int paymentPerHour) throws PaymentException {
-        if(paymentPerHour > 1000)
-            throw new PaymentException("Too much payment");
+    private void safeSetPaymentPerHour(int paymentPerHour) {
         this.paymentPerHour = paymentPerHour;
     }
 
@@ -32,12 +26,14 @@ public class HourlyWorker extends Worker {
         return paymentPerHour;
     }
 
-    public void quit(){
-        otdel.quitMe(this);
+    public void setPaymentPerHour(int paymentPerHour) throws PaymentException {
+        if (paymentPerHour > 1000)
+            throw new PaymentException("Too much payment");
+        this.paymentPerHour = paymentPerHour;
     }
 
-    @Override
-    public void deleteOtdel() {
+    public void quit() {
+        otdel.quitMe(this);
         otdel = null;
     }
 
@@ -64,7 +60,7 @@ public class HourlyWorker extends Worker {
     @Override
     public String toString() {
         String otdelStr;
-        if(otdel==null)
+        if (otdel == null)
             otdelStr = "null";
         else otdelStr = otdel.getName();
         return "HourlyWorker{" +

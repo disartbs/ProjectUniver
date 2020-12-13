@@ -34,12 +34,10 @@ public abstract class Worker {
     }
 
     public void setBirthYear(int birthYear) throws TimeException {
-        if (birthYear < 1940|| birthYear > 2002)
-            throw  new TimeException("impossible age for this work");
+        if (birthYear < 1940 || birthYear > 2002)
+            throw new TimeException("impossible age for this work");
         this.birthYear = birthYear;
     }
-
-    public abstract void deleteOtdel();
 
     public abstract void attachOtdel(MyOtdel otdel);
 

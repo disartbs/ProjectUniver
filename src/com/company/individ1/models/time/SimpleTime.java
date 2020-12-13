@@ -1,17 +1,17 @@
 package com.company.individ1.models.time;
 
 public class SimpleTime {
+    float time;
     private int hours;
     private int minutes;
-    float time;
 
     public SimpleTime(int hours, int minutes) {
         if (minutes >= 60) {
             hours += minutes / 60;
             minutes %= 60;
         }
-        time+=hours;
-        time+=minutes*0.01;
+        time += hours;
+        time += minutes * 0.01;
     }
 
     public SimpleTime(float time) {
@@ -37,8 +37,8 @@ public class SimpleTime {
         }
         time = 0;
         this.minutes = minutes;
-        time+=hours;
-        time+=minutes*0.01;
+        time += hours;
+        time += minutes * 0.01;
     }
 
     public float getValue() {
@@ -47,6 +47,6 @@ public class SimpleTime {
 
     @Override
     public String toString() {
-        return ""+time;
+        return "" + time;
     }
 }
