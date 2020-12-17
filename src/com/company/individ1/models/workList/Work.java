@@ -4,6 +4,7 @@ import com.company.individ1.exceptions.TimeException;
 import com.company.individ1.models.workers.HourlyWorker;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Work {
@@ -22,6 +23,25 @@ public class Work {
         }
         this.numberWorkingHours = numberWorkingHours;
         price = numberWorkingHours * worker.getPaymentPerHour();
+    }
+
+    public Work(HourlyWorker worker, Date date, int numberWorkingHours) {
+        this.worker = worker;
+        try {
+            setDate(date);
+        } catch (TimeException exception) {
+            System.out.println(exception.getMessage() + " default will be 2020.0.1");
+            safeSetDate(new GregorianCalendar(2020, 0, 1));
+        }
+        this.numberWorkingHours = numberWorkingHours;
+        price = numberWorkingHours * worker.getPaymentPerHour();
+    }
+
+    private void setDate(Date date) throws TimeException{
+        if (date.after(Calendar.getInstance().getTime()))
+            throw new TimeException("Date after now");
+        this.date = new GregorianCalendar();
+        this.date.setTime(date);
     }
 
     private void safeSetDate(GregorianCalendar date) {

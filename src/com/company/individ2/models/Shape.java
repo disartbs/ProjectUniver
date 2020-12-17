@@ -1,5 +1,6 @@
 package com.company.individ2.models;
 
 public interface Shape {
-    public Point[] getPoints();
+    Point[] getPoints();
+    void move(int x, int y);
 }

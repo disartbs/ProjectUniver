@@ -24,6 +24,14 @@ public class Tetragon implements Shape {
         return new Point[]{p1, p2, p3, p4};
     }
 
+    @Override
+    public void move(int x, int y) {
+        p1.move(x, y);
+        p2.move(x, y);
+        p3.move(x, y);
+        p4.move(x, y);
+    }
+
 
     @Override
     public int hashCode() {

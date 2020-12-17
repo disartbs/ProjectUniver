@@ -9,8 +9,12 @@ import com.company.individ1.models.workList.Work;
 import com.company.individ1.models.workers.FullTimeWorker;
 import com.company.individ1.models.workers.HourlyWorker;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Main {
 
@@ -36,10 +40,21 @@ public class Main {
                 new SimpleTime(15, 0), new SimpleTime(10, 0)));
         otdel.setFullTimeWorkersTable(fullTimeWorkersTable);
 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        Scanner scanner = new Scanner(System.in);
         HourlyWorkersWorkList hourlyWorkersWorkList = new HourlyWorkersWorkList(new LinkedList<>());
-        hourlyWorkersWorkList.addWork(new Work(hourlyWorker1, new GregorianCalendar(2020, 8, 3), 8));
-        hourlyWorkersWorkList.addWork(new Work(hourlyWorker2, new GregorianCalendar(2020, 11, 20), 8));
+        Date date1;
+        System.out.println("Data: dd.MM.yyyy");
+        String str = scanner.next();
+        try {
+            date1 = simpleDateFormat.parse(str);
+        } catch (ParseException e) {
+            date1 = new Date(11111111111l);
+        }
+
         otdel.setHourlyWorkersWorkList(hourlyWorkersWorkList);
+        hourlyWorkersWorkList.addWork(new Work(hourlyWorker1, date1, 8));
+        hourlyWorkersWorkList.addWork(new Work(hourlyWorker2, new GregorianCalendar(2020, 11, 5), 8));
 
         System.out.println(otdel);
 

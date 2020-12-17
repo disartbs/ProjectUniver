@@ -22,6 +22,13 @@ public class Triangle implements Shape {
     }
 
     @Override
+    public void move(int x, int y) {
+        p1.move(x, y);
+        p2.move(x, y);
+        p3.move(x, y);
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(p1, p2, p3);
     }

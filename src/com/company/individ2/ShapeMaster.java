@@ -3,17 +3,12 @@ package com.company.individ2;
 import com.company.individ2.models.Point;
 import com.company.individ2.models.Shape;
 
-public class ShapeMaster<T extends Shape> {
+public class ShapeMaster<T1 extends Shape, T2 extends Shape> {
 
-    private T t;
 
-    public ShapeMaster(T shape) {
-        this.t = shape;
-    }
-
-    boolean isPointIncludeT1(Point point) {
+    boolean isPointIncludeT1(Point point, T1 t1) {
         boolean result = false;
-        Point[] p = t.getPoints();
+        Point[] p = t1.getPoints();
         int j = p.length - 1;
         for (int i = 0; i < p.length; i++) {
             if ((p[i].getY() <=/*Для строгого включения убрать =*/ point.getY() && p[j].getY() >= point.getY() ||
@@ -27,20 +22,21 @@ public class ShapeMaster<T extends Shape> {
         return result;
     }
 
-    public boolean isInclude(Shape shape) {
-        Point[] points = shape.getPoints();
+    /**
+     * @param t1
+     * @param t2 is t2 include t1
+     */
+    public boolean isInclude(T1 t1, T2 t2) {
+        Point[] points2 = t2.getPoints();
         boolean result = true;
-        for (Point point : points) {
-            result = result && isPointIncludeT1(point);
-            System.out.println("" + point + " " + isPointIncludeT1(point));
+        for (Point point : points2) {
+            result = result && isPointIncludeT1(point, t1);
+            System.out.println("" + point + " " + isPointIncludeT1(point, t1));
         }
         return result;
     }
 
-    public void move(int x, int y) {
-        Point[] points = t.getPoints();
-        for (Point point : points) {
-            point.move(x, y);
-        }
+    public void move(Shape shape) {
+        shape.move(1,1);
     }
 }
