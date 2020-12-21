@@ -32,6 +32,19 @@ public class ParkSnake extends Snake implements OceanariumIncome {
     }
 
     @Override
+    public String toString() {
+        return "ParkSnake{" +
+                "incomeDate=" + incomeDate +
+                ", owner=" + owner.getName() +
+                ", age=" + age +
+                ", length=" + length +
+                ", isPoisons=" + isPoisons +
+                ", name='" + name + '\'' +
+                ", kind='" + kind + '\'' +
+                '}';
+    }
+
+    @Override
     public int getIncomeDate() {
         return incomeDate;
     }

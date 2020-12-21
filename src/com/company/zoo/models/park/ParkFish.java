@@ -28,12 +28,16 @@ public class ParkFish extends Fish implements OceanariumIncome, ZooIncome {
 
     @Override
     public String toString() {
-        return "Fish " +
-                "water " + water +
-                ", type " + type +
-                ", edible " + edible +
-                ", age " + age +
-                ", incomeDate " + incomeDate;
+        return "ParkFish{" +
+                "incomeDate=" + incomeDate +
+                ", zoo=" + zoo.getName() +
+                ", water='" + water + '\'' +
+                ", type='" + type + '\'' +
+                ", edible=" + edible +
+                ", age=" + age +
+                ", name='" + name + '\'' +
+                ", kind='" + kind + '\'' +
+                '}';
     }
 
     @Override
