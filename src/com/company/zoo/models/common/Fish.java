@@ -3,6 +3,7 @@ package com.company.zoo.models.common;
 import com.company.zoo.exceptions.NotEqualsException;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Fish extends Entity {
 
@@ -19,6 +20,19 @@ public class Fish extends Entity {
         this.age = age;
     }
 
+    public Fish(Scanner scanner){
+        super(scanner);
+        input(scanner);
+    }
+
+    public void input(Scanner scanner){
+        System.out.println("type, age,edible, water");
+        type = scanner.next();
+        age = scanner.nextInt();
+        edible = scanner.nextBoolean();
+        water = scanner.next();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -31,6 +45,8 @@ public class Fish extends Entity {
                 Objects.equals(getWater(), fish.getWater()) &&
                 Objects.equals(getType(), fish.getType());
     }
+
+
 
     @Override
     public int hashCode() {

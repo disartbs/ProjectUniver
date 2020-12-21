@@ -1,6 +1,7 @@
 package com.company.zoo.models.common;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Animal extends Entity {
 
@@ -15,6 +16,18 @@ public class Animal extends Entity {
         this.kind = kind;
         this.age = age;
         this.sex = sex;
+    }
+
+    public Animal(Scanner scanner){
+        super(scanner);
+        input(scanner);
+    }
+
+    public void input(Scanner scanner){
+        System.out.println("continent, age,sex");
+        continent = scanner.next();
+        age = scanner.nextInt();
+        sex = scanner.next().charAt(0);
     }
 
     @Override

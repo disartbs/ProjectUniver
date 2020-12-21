@@ -3,6 +3,7 @@ package com.company.zoo.models.common;
 import com.company.zoo.exceptions.NotEqualsException;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Snake extends Entity {
 
@@ -15,6 +16,18 @@ public class Snake extends Entity {
         this.age = age;
         this.length = length;
         this.isPoisons = isPoisons;
+    }
+
+    public Snake(Scanner scanner){
+        super(scanner);
+        input(scanner);
+    }
+
+    public void input(Scanner scanner){
+        System.out.println("length, age,isPoisons");
+        length = scanner.nextInt();
+        age = scanner.nextInt();
+        isPoisons = scanner.nextBoolean();
     }
 
     @Override

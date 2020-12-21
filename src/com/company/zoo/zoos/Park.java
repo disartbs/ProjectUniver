@@ -1,7 +1,5 @@
 package com.company.zoo.zoos;
 
-import com.company.zoo.exceptions.NotEqualsException;
-import com.company.zoo.exceptions.NotInZooOrOcenariumException;
 import com.company.zoo.interfaces.income.ParkIncome;
 import com.company.zoo.interfaces.income.ZooIncome;
 import com.company.zoo.interfaces.park.ParkWork;
@@ -9,9 +7,9 @@ import com.company.zoo.models.common.Entity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Scanner;
 
-public class Park<T extends ParkIncome> implements ParkWork {
+public abstract class Park<T extends ParkIncome> implements ParkWork {
 
     private ArrayList<T> entities;
     protected String name;
@@ -22,12 +20,14 @@ public class Park<T extends ParkIncome> implements ParkWork {
         setIncome(date);
     }
 
+    public abstract void input(Scanner scanner);
+
     public Park(String name) {
         this.name = name;
         entities = new ArrayList<>();
     }
 
-    public void addEntity(ZooIncome zooEntity, int date){
+    public void addEntity(ParkIncome zooEntity, int date){
         zooEntity.setIncomeDate(date, this);
         entities.add((T) zooEntity);
     }

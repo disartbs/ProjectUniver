@@ -6,6 +6,8 @@ import com.company.zoo.interfaces.park.ParkWork;
 import com.company.zoo.interfaces.income.OceanariumIncome;
 import com.company.zoo.interfaces.income.ZooIncome;
 
+import java.util.Scanner;
+
 public class ParkFish extends Fish implements OceanariumIncome, ZooIncome {
 
     private int incomeDate;
@@ -14,6 +16,10 @@ public class ParkFish extends Fish implements OceanariumIncome, ZooIncome {
     public ParkFish(String name, String kind, String water, String type, boolean edible, int age) {
         super(name, kind, water, type, edible, age);
 
+    }
+
+    public ParkFish(Scanner scanner){
+        super(scanner);
     }
 
     int getPositionInZoo() throws NotInZooOrOcenariumException {

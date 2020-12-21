@@ -7,6 +7,7 @@ import com.company.zoo.models.common.Snake;
 import com.company.zoo.interfaces.income.OceanariumIncome;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 public class ParkSnake extends Snake implements OceanariumIncome {
 
@@ -18,6 +19,10 @@ public class ParkSnake extends Snake implements OceanariumIncome {
         super(name, kind, age, length, isPoisons);
         this.incomeDate = incomeDate;
         this.owner = owner;
+    }
+
+    public ParkSnake(Scanner scanner){
+        super(scanner);
     }
 
     @Override

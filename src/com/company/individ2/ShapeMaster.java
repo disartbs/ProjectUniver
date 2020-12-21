@@ -5,6 +5,8 @@ import com.company.individ2.models.Shape;
 
 public class ShapeMaster<T1 extends Shape, T2 extends Shape> {
 
+    private boolean flag;
+
     boolean isPointIncludeT1(Point point, T1 t1) {
         boolean result = false;
         int trueCount = 0;
@@ -46,6 +48,7 @@ public class ShapeMaster<T1 extends Shape, T2 extends Shape> {
         int trueCount = 0;
         Point p0 = new Point(Math.random() * 10000, Math.random() * 10000);
         Point[] p = t1.getPoints();
+
         int j = p.length - 1;
         for (int i = 0; i < p.length; i++) {
             if (isIntersection(p[i], p[j], point, p0)) {
@@ -76,20 +79,23 @@ public class ShapeMaster<T1 extends Shape, T2 extends Shape> {
         double c2 = p3.getX() * p4.getY() - p4.getX() * p3.getY();
         det = b2 * a1 - a2 * b1;
         if (det == 0) { // || или совпадают
-            if (c1 * a2 - c2 * a1 == 0 //Проверка вложенности отрезков друг в друга. Из уравнений отрезков
-                    && c1 * b2 - c2 * b1 == 0) {
-                result = true;
+          //  if (c1 * a2 - c2 * a1 == 0 //Проверка вложенности отрезков друг в друга. Из уравнений отрезков
+                   // && c1 * b2 - c2 * b1 == 0)
+            {
+                result = isIntersection(p1, p2, p3, p4);
                 //System.out.print("Отрезки пересекаются");
-            } else {
-                result = false;
-                //System.out.print("Отрезки не пересекаются");
             }
         } else {
             det1 = a0 * b2 - a2 * b0;
             det2 = a1 * b0 - a0 * b1;
             u = det1 / det;
             v = det2 / det;
-            if (u > 0 && u < 1 && v > 0 && v < 1) {
+            if ((u == 1.0 || v == 1.0) && flag != true) {
+                flag = true;
+
+                return false;
+            }
+            if (u >= 0 && u <= 1 && v >= 0 && v <= 1) {
                 result = true;
                 //System.out.print("Отрезки пересекаются");
             } else {
@@ -112,8 +118,10 @@ public class ShapeMaster<T1 extends Shape, T2 extends Shape> {
         Point[] points2 = t2.getPoints();
         boolean result = true;
         for (Point point : points2) {
+            flag = false;
             result = result && rayTracing(point, t1);
         }
+
         return result;
     }
 
